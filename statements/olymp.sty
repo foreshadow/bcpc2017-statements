@@ -28,7 +28,7 @@
 
 % -- Setup margins --
 %
-% Tex defines to large margins for our purposes. 
+% Tex defines to large margins for our purposes.
 % So we redefine this to use paper more efficiently
 %
 
@@ -178,22 +178,22 @@
 \else
 \def\kw@ProblemTutorial{Problem Tutorial}
 \def\kw@Problem{Problem}
-\def\kw@ProblemAuthor{Author:}
+\def\kw@ProblemAuthor{作者}
 \def\kw@ProblemDeveloper{Developer:}
 \def\kw@ProblemOrigin{Origin:}
-\def\kw@InputFileName{Input file:}
-\def\kw@OutputFileName{Output file:}
-\def\kw@TimeLimit{Time limit:}
-\def\kw@MemoryLimit{Memory limit:}
+\def\kw@InputFileName{输入文件}
+\def\kw@OutputFileName{输出文件}
+\def\kw@TimeLimit{时间限制}
+\def\kw@MemoryLimit{内存限制}
 \def\kw@Feedback{Feedback:}
 \def\kw@stdin{standard input}
 \def\kw@stdout{standard output}
 \def\kw@Specification{Specification}
 \def\kw@Interaction{Interaction Protocol}
-\def\kw@Input{Input}
-\def\kw@Output{Output}
-\def\kw@Example{Example}
-\def\kw@Examples{Examples}
+\def\kw@Input{输入数据}
+\def\kw@Output{输出数据}
+\def\kw@Example{样例}
+\def\kw@Examples{样例}
 \def\kwExampleNotes{Notes}
 \def\kw@Explanation{Explanation}
 \def\kw@Explanations{Explanations}
@@ -215,7 +215,7 @@
 \def\kw@Page{Page}
 \def\kw@of{of}
 \def\kw@notstated{not stated}
-\def\kw@IntentionallyBlankPage{This page is intentionally left blank}
+\def\kw@IntentionallyBlankPage{此页留白}
 \def\kw@defaultinputname{test}
 \def\kw@defaultoutputname{answer}
 \fi
@@ -229,7 +229,7 @@
 \clearpage
 \ifintentionallyblankpages
   \ifodd\value{page}
-  \else        
+  \else
      \vspace*{\fill}
      \begin{center}
      \problemheadfont\kw@IntentionallyBlankPage
@@ -237,7 +237,7 @@
      \vspace*{\fill}
      \clearpage
   \fi
-\fi       
+\fi
 }
 \newcommand{\problemtextfont}{\normalsize}
 \newcommand{\beforeproblemsectioncaption}{\smallbreak\smallskip}
@@ -415,6 +415,7 @@
         \ifdefined\NoProblemHead\else%
         \noindent
         \refstepcounter{problem}
+        \par
         \textbf{\problemheadfont\textsf{%
                 \ifdefined\ShortProblemTitle\else{\kw@Problem\ \if@arabic\arabic{problem}\else\Alph{problem}\fi.\ }\fi%
                 #1%
@@ -545,7 +546,7 @@
         \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\%
         \hline
         \begin{minipage}[t]{\exmpwidewid}\rightskip=0pt plus 1fill\relax
-        ##2    
+        ##2
         \medskip\end{minipage}\\%
         \hline
         \end{tabular}
@@ -636,7 +637,8 @@
 \newcommand{\thecontestdate}{Once upon a time}
 \newcommand{\therevision}{undefined}
 
-\DeclareRobustCommand{\contestname}{\thecontestname\par\thecontestlocation\unskip, \thecontestdate}
+% \DeclareRobustCommand{\contestname}{\thecontestname\par\thecontestlocation\unskip，\thecontestdate}
+\DeclareRobustCommand{\contestname}{\thecontestname\vspace{2mm}}
 
 \DeclareRobustCommand{\contest}[3]{
     \renewcommand{\thecontestname}{#1}
@@ -680,7 +682,7 @@
         {\hfill}%
         {\kw@ProblemAuthor~\lastproblemauthor}%
         {\hfill}%
-        {\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter}\quad~}}%
+        {第 \thepage\ 页，共\ \pageref{LastPage} 页\rsigfooter}\quad~}}%
 \else%
 \ifdisplaydeveloperinfooter%
 	{\gdef\thefooter%
@@ -704,7 +706,7 @@
 }
 
 \makeatother
- 
+
 \headheight=2cm
 \headsep=6mm
 
